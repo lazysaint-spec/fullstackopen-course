@@ -103,9 +103,7 @@ const App = (props) => {
       entryService
       .deleteEntry(id)
       .then(() => {
-        [
-          setPersons(persons.filter(person => person.id !== id)),
-        ]
+          setPersons(persons.filter(person => person.id !== id))
       })
     } else {
       console.log('deletion canceled')
