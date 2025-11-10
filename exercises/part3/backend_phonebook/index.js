@@ -27,17 +27,14 @@ let persons = [
     }
 ]
 
-
-app.use(express.json())
-app.use(cors())
-app.use(express.static('dist'))
-
 morgan.token('body', req => {
   return JSON.stringify(req.body)
 })
-// app.use(requestLogger)
-app.use(morgan(':method :url :body'))
 
+app.use(express.json())
+app.use(cors())
+app.use(morgan(':method :url :body'))
+app.use(express.static('dist'))
 
 app.get('/api/persons', (request, response) => {
     response.json(persons)
