@@ -53,7 +53,6 @@ const App = (props) => {
     const person = persons.find(n => n.name === newName)
     const updateNumber = { ...person, number: newNumber}
 
-    console.log('main:', persons.find(n => n.name === newName))
 
     if (deDup(newName)) {
       if(window.confirm(`${newName} is already in the phonebook, replace the old number with a new one?`))
@@ -86,6 +85,15 @@ const App = (props) => {
           setPersons(persons.concat(response))
           setNewName('')
           setNumber('')
+        })
+        .catch(error => {
+          setNotifType('error')
+          setNotifMessage(error.response.data.error)
+          setTimeout(() => {
+            setNotifType(null)
+            setNotifMessage(null)
+            getData()
+          }, 5000)
         })
       
       setNotifMessage(`Added ${newName} successfully`)
