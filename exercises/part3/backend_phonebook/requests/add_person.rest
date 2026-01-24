@@ -2,6 +2,9 @@ POST http://localhost:3001/api/persons
 content-type: application/json
 
 {
-    "name": "George Washington",
-    "number": "041-123461"
+    "name": "Georgy Zhukov",
+    "number": "12-234567"
 }
+
+# GET http://localhost:3001/api/persons
+# content-type: application/json

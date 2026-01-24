@@ -23,8 +23,22 @@ mongoose.connect(url, {family: 4})
     })
 
 const entryScheme = new mongoose.Schema({
-    name: String,
-    number: String || Number,
+    name: { 
+        type: String,
+        minLength: 3,
+        required: true,
+    },
+    number: {
+        type: String || Number,
+        // minLength: 8,
+        validate: {
+            validator: function(v) {
+                return /\d{2}-\d{6}/.test(v) || /\d{3}-\d{5}/.test(v) 
+            },
+            message: props => `${props.value} is not a valid phone number`
+        }, 
+        required: true,
+    },
 })
 
 entryScheme.set('toJSON', { 
