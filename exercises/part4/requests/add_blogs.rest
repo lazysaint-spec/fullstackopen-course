@@ -1,0 +1,60 @@
+# POST http://localhost:3003/api/blogs
+# content-type: application/json
+
+# {
+#   "title": "1984",
+#   "author": "George Orwell",
+#   "url": "www.1984.com",
+#   "likes": "24"
+# }
+
+# POST http://localhost:3003/api/users
+# content-type: application/json
+
+# {
+#   "username": "hellas",
+#   "name": "Arto Hellas",
+#   "password": "hellas"
+# }
+
+# POST http://localhost:3003/api/login
+# content-type: application/json
+
+# {
+#   "username": "hellas",
+#   "password": "hellas"
+# }
+
+# POST http://localhost:3003/api/login
+# content-type: application/json
+
+# {
+#   "username": "root",
+#   "password": "salainen"
+# }
+
+POST http://localhost:3003/api/blogs
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjY5YTA2NTBlMGNkNzAzOWYwZWMzZDQ4YiIsImlhdCI6MTc3MjIxMTA1NiwiZXhwIjoxNzcyMjE0NjU2fQ.h6nbiMD65rc-BlAuEK-UErxSSdBjQCN6WWl90yedCac
+
+{
+  "title": "First class tests",
+  "author": "Robert C. Martin",
+  "url": "http://blog.cleancoder.com/uncle-bob/2017/05/05/TestDefinitions.htmll",
+  "likes": 10,
+  "user": "69a0650e0cd7039f0ec3d48b"
+}
+
+# DELETE http://localhost:3003/api/blogs
+# content-type: application/json
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjY5YTA2NTBlMGNkNzAzOWYwZWMzZDQ4YiIsImlhdCI6MTc3MjE4MjIxNiwiZXhwIjoxNzcyMTg1ODE2fQ.ienIMArOboEAwegWYD55jxvqijGXLZsS0rdgdI8EdSQ
+
+# {
+#   "username": "root",
+#   "password": "salainen",
+#   "title": "Canonical string reduction",
+#   "author": "Edsger W. Dijkstra",
+#   "url": "http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html",
+#   "likes": 12,
+#   "user": "69a0650e0cd7039f0ec3d48b"
+# }
