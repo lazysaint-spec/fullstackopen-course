@@ -44,7 +44,6 @@
 
 # POST http://localhost:3003/api/blogs
 # content-type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI2OWFlNzJjMmU1ZjNhMzU3MDg0N2Y3OWQiLCJpYXQiOjE3NzMwNDA1MTQsImV4cCI6MTc3MzA0NDExNH0.DnHW0tIpN0zJswhUBunCNMo6MMVrt6cofhKrQWVc58A
 
 # {
 #   "title": "The Joel Test: 12 Steps to Better Code",
@@ -56,7 +55,7 @@
 
 PUT http://localhost:3003/api/blogs/69ae77111faf7e78a8010849
 content-type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sdXVra2FpIiwiaWQiOiI2OWFlNzJjMmU1ZjNhMzU3MDg0N2Y3OWQiLCJpYXQiOjE3NzMwNDQ4MzcsImV4cCI6MTc3MzA0ODQzN30.4MbM-dXeAdAutaiHEXaG3Q2M6EDY7adjne_S5NzGDbI
+
 
 {
   "title": "The Joel Test: 12 Steps to Better Code",
@@ -68,7 +67,6 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1sd
 
 # DELETE http://localhost:3003/api/blogs
 # content-type: application/json
-# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJvb3QiLCJpZCI6IjY5YTA2NTBlMGNkNzAzOWYwZWMzZDQ4YiIsImlhdCI6MTc3MjE4MjIxNiwiZXhwIjoxNzcyMTg1ODE2fQ.ienIMArOboEAwegWYD55jxvqijGXLZsS0rdgdI8EdSQ
 
 # {
 #   "username": "root",
