@@ -50,24 +50,44 @@ blogRouter.post('/', middleware.userExtractor, async (request, response, next) =
   }
 })
 
-blogRouter.delete('/:id', middleware.userExtractor, async (request, response) => {
-  const decodedToken = jwt.verify(request.token, process.env.SECRET)
-  const user = request.user
+blogRouter.post('/:id/comments', async (request, response) => {
+  const { comment } = request.body
+
   const blog = await Blog.findById(request.params.id)
-
-
-  if (!decodedToken.id) {
-    return response.status(401).json({ error: 'token invalid' })
-  }
-  if (!user) {
-    return response.status(400).json({ error: 'userId missing or not valid' })
-  }
-  if (user._id.toString() !== blog.user.toString()) {
-    return response.status(400).json({ error: 'deletion not permitted' })
+  if (!blog) {
+    return response.status(404).json({ error: 'blog not found' })
   }
 
-  await Blog.findByIdAndDelete(request.params.id)
-  response.status(204).end()
+  blog.comments = blog.comments ? blog.comments.concat(comment) : [comment]
+  await blog.save()
+
+  response.status(201).json(blog)
+})
+
+blogRouter.delete('/:id', middleware.userExtractor, async (request, response, next) => {
+  try {
+
+    const decodedToken = jwt.verify(request.token, process.env.SECRET)
+    if (!decodedToken.id) {
+      return response.status(401).json({ error: 'token invalid' })
+    }
+
+    const user = request.user
+    if (!user) {
+      return response.status(400).json({ error: 'userId missing or not valid' })
+    }
+
+    const blog = await Blog.findById(request.params.id)
+
+    if (!blog) {
+      return response.status(404).json({ error: 'blog already deleted or not found' })
+    }
+
+    await Blog.findByIdAndDelete(request.params.id)
+    response.status(204).end()
+  } catch (error) {
+    next(error)
+  }
 })
 
 blogRouter.put('/:id', async(request, response) => {

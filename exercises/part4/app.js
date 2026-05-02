@@ -9,6 +9,7 @@ const middleware = require('./utils/middleware')
 
 
 const app = express()
+const path = require('path')
 
 logger.info('connecting to', config.MONGODB_URI)
 
@@ -22,7 +23,7 @@ mongoose
     logger.info('error connecting to MongoDB:', error)
   })
 
-app.use(express.static('dist'))
+app.use(express.static(path.join(__dirname, 'bloglist-frontend', 'dist')))
 app.use(express.json())
 
 app.use(middleware.requestLogger)
@@ -36,6 +37,10 @@ if (process.env.NODE_ENV === 'test') {
   const testingRouter = require('./controllers/testing')
   app.use('/api/testing', testingRouter)
 }
+
+app.get('/{*splat}', (req, res) => {
+  res.sendFile(path.join(__dirname, 'bloglist-frontendfrontend', 'dist', 'index.html'))
+})
 
 app.use(middleware.unknownEndpoint)
 app.use(middleware.errorHandler)
